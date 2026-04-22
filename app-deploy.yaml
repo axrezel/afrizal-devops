@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: afrizal-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: afrizal
+  template:
+    metadata:
+      labels:
+        app: afrizal
+    spec:
+      containers:
+      - name: afrizal-container
+        image: afrizal-app:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
