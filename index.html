@@ -1,68 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Lucas DevOps Portfolio</title>
+  <title>DevOps Dashboard</title>
   <style>
     body {
       margin: 0;
       font-family: Arial;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background: #0f172a;
       color: white;
-      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background: #020617;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .status {
+      color: #22c55e;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.5; }
     }
 
     .container {
-      padding: 50px;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #94a3b8;
+      padding: 20px;
     }
 
     .card {
       background: #1e293b;
       padding: 20px;
-      margin: 20px auto;
+      margin: 10px;
       border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      display: inline-block;
+      width: 250px;
+      vertical-align: top;
+      transition: transform 0.2s;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #38bdf8;
-      color: black;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 20px;
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .logs {
+      background: black;
+      padding: 10px;
+      height: 150px;
+      overflow: auto;
+      font-family: monospace;
+      color: #22c55e;
     }
   </style>
 </head>
+
 <body>
 
+<header>
+  <h2>Afrizal DevOps Dashboard 🚀</h2>
+  <div class="status">● LIVE</div>
+</header>
+
 <div class="container">
-  <h1>Hi, I'm Lucas 🚀</h1>
-  <p>DevOps Engineer | Kubernetes | Cloud</p>
 
   <div class="card">
-    <h2>🚀 Project</h2>
-    <p>Kubernetes Deployment + HAProxy + CI/CD</p>
+    <h3>🚀 Kubernetes</h3>
+    <p>Cluster Running</p>
   </div>
 
   <div class="card">
-    <h2>🛠 Skills</h2>
-    <p>Docker, Kubernetes, Linux, Networking</p>
+    <h3>🐳 Docker</h3>
+    <p>Image Deployed</p>
   </div>
 
-  <a href="#" class="btn">Contact Me</a>
+  <div class="card">
+    <h3>⚖️ HAProxy</h3>
+    <p>Load Balancing Active</p>
+  </div>
+
+  <div class="card">
+    <h3>🌐 Ingress</h3>
+    <p>Routing OK</p>
+  </div>
+
+  <h3>📊 Activity Logs</h3>
+  <div class="logs" id="logs"></div>
+
 </div>
+
+<script>
+  const logs = document.getElementById("logs");
+
+  setInterval(() => {
+    const time = new Date().toLocaleTimeString();
+    logs.innerHTML += `[${time}] Deployment running...\n`;
+    logs.scrollTop = logs.scrollHeight;
+  }, 1000);
+</script>
 
 </body>
 </html>
